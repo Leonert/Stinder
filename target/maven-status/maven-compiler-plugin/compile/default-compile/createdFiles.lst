@@ -1,0 +1,13 @@
+org\example\Servlet\LogoutServlet.class
+org\example\Servlet\StaticServlet.class
+org\example\Servlet\LikePageServlet.class
+org\example\Entities\User.class
+org\example\LoginFilter.class
+org\example\Entities\Message.class
+org\example\Servlet\PeopleListServlet.class
+org\example\Entities\Profile.class
+org\example\DAO.class
+org\example\Servlet\ChatServlet.class
+org\example\Servlet\LoginServlet.class
+org\example\App.class
+org\example\Servlet\SignUpServlet.class
