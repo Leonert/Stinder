@@ -7,6 +7,7 @@ org\example\Entities\Message.class
 org\example\Servlet\PeopleListServlet.class
 org\example\Entities\Profile.class
 org\example\DAO.class
+org\example\Servlet\StartServlet.class
 org\example\Servlet\ChatServlet.class
 org\example\Servlet\LoginServlet.class
 org\example\App.class
