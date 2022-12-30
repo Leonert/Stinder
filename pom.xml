@@ -109,8 +109,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>18</source>
-          <target>18</target>
+          <source>19.0.1</source>
+          <target>19.0.1</target>
         </configuration>
       </plugin>
       <plugin>
