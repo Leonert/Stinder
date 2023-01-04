@@ -1,2 +1,4 @@
-/target/heroku local web
+/target/
 /.idea
+*.jar
+*.class
