@@ -16,7 +16,8 @@ public class App {
 //    public static final String pathname = "src/main/resources/static-content";
 
     public static void main(String[] args) throws Exception {
-        Server server = new Server(80);
+        System.out.println(System.getenv("$PORT"));
+        Server server = new Server(Integer.parseInt(System.getenv("$PORT")));
         ServletContextHandler handler = new ServletContextHandler();
         handler.addLocaleEncoding("ru", "UTF-8");
         DAO dao = new DAO();
