@@ -11,7 +11,7 @@ import java.util.EnumSet;
 
 public class App {
     public final static String cookieName = "sessionId";
-    private static final EnumSet<DispatcherType> ft = EnumSet.of(DispatcherType.REQUEST);
+//    private static final EnumSet<DispatcherType> ft = EnumSet.of(DispatcherType.REQUEST);
     public static final String pathname = "static-content";
 //    public static final String pathname = "src/main/resources/static-content";
 
@@ -30,10 +30,10 @@ public class App {
         handler.addServlet(LogoutServlet.class, "/logout");
         handler.addServlet(StartServlet.class, "/");
 
-        handler.addFilter(new FilterHolder(new LoginFilter(dao)), "/messages/*", ft);
-        handler.addFilter(new FilterHolder(new LoginFilter(dao)), "/liked", ft);
-        handler.addFilter(new FilterHolder(new LoginFilter(dao)), "/users", ft);
-        handler.addFilter(new FilterHolder(new LoginFilter(dao)), "/login", ft);
+//        handler.addFilter(new FilterHolder(new LoginFilter(dao)), "/messages/*", ft);
+//        handler.addFilter(new FilterHolder(new LoginFilter(dao)), "/liked", ft);
+//        handler.addFilter(new FilterHolder(new LoginFilter(dao)), "/users", ft);
+//        handler.addFilter(new FilterHolder(new LoginFilter(dao)), "/login", ft);
 
         server.setHandler(handler);
 
