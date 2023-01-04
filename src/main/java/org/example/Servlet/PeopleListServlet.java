@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.example.App.cookieName;
+import static org.example.App.pathname;
 
 public class PeopleListServlet extends HttpServlet {
 
@@ -37,13 +38,13 @@ public class PeopleListServlet extends HttpServlet {
         sessionId = Arrays.stream(req.getCookies()).filter(x -> x.getName().equals(cookieName)).findFirst().get().getValue();
         Configuration conf = new Configuration(freemarker.template.Configuration.VERSION_2_3_31);
         conf.setDefaultEncoding(String.valueOf(StandardCharsets.UTF_8));
-        conf.setDirectoryForTemplateLoading(new File("static-content"));
+        conf.setDirectoryForTemplateLoading(new File(pathname));
         resp.setCharacterEncoding(String.valueOf(StandardCharsets.UTF_8));
 
         try {
             List<Profile> profiles = dao.getLikedProfiles(sessionId);
             if (profiles.isEmpty()) {
-                List<String> strings = Files.readAllLines(Paths.get("static-content/NoLikedProfiles.html"));
+                List<String> strings = Files.readAllLines(Paths.get(pathname, "/NoLikedProfiles.html"));
                 try (PrintWriter w = resp.getWriter()) {
                     strings.forEach(w::println);
                 }

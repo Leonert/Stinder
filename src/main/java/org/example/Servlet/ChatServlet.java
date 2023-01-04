@@ -2,7 +2,6 @@ package org.example.Servlet;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateException;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.example.App.cookieName;
+import static org.example.App.pathname;
 
 public class ChatServlet extends HttpServlet {
     DAO dao;
@@ -45,7 +45,7 @@ public class ChatServlet extends HttpServlet {
 
         Configuration conf = new Configuration(freemarker.template.Configuration.VERSION_2_3_31);
         conf.setDefaultEncoding(String.valueOf(StandardCharsets.UTF_8));
-        conf.setDirectoryForTemplateLoading(new File("static-content"));
+        conf.setDirectoryForTemplateLoading(new File(pathname));
         resp.setCharacterEncoding(String.valueOf(StandardCharsets.UTF_8));
 
         Map<String, Object> data = new HashMap<>();

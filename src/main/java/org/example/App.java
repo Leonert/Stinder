@@ -1,7 +1,6 @@
 package org.example;
 
 import jakarta.servlet.DispatcherType;
-import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -9,17 +8,20 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.example.Servlet.*;
 
 import java.util.EnumSet;
+
 public class App {
     public final static String cookieName = "sessionId";
     private static final EnumSet<DispatcherType> ft = EnumSet.of(DispatcherType.REQUEST);
+    public static final String pathname = "static-content";
+//    public static final String pathname = "src/main/resources/static-content";
 
     public static void main(String[] args) throws Exception {
-        Server server = new Server(8080);
+        Server server = new Server(80);
         ServletContextHandler handler = new ServletContextHandler();
         handler.addLocaleEncoding("ru", "UTF-8");
         DAO dao = new DAO();
         handler.addServlet(new ServletHolder(new LikePageServlet(dao)), "/users");
-        handler.addServlet(new ServletHolder(new StaticServlet("static-content")), "/static/*");
+        handler.addServlet(new ServletHolder(new StaticServlet(pathname)), "/static/*");
         handler.addServlet(new ServletHolder(new PeopleListServlet(dao)), "/liked");
         handler.addServlet(new ServletHolder(new ChatServlet(dao)), "/messages/*");
         handler.addServlet(new ServletHolder(new LoginServlet(dao)), "/login");

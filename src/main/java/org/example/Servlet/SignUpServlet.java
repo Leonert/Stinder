@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.example.App.cookieName;
+import static org.example.App.pathname;
 
 public class SignUpServlet extends HttpServlet {
     DAO dao;
@@ -30,7 +31,7 @@ public class SignUpServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Configuration conf = new Configuration(freemarker.template.Configuration.VERSION_2_3_31);
         conf.setDefaultEncoding(String.valueOf(StandardCharsets.UTF_8));
-        conf.setDirectoryForTemplateLoading(new File("static-content"));
+        conf.setDirectoryForTemplateLoading(new File(pathname));
         resp.setCharacterEncoding(String.valueOf(StandardCharsets.UTF_8));
 
         Map<String, Object> data = new HashMap<>();

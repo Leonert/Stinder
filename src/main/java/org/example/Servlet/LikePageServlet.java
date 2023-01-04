@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.example.App.cookieName;
+import static org.example.App.pathname;
 
 public class LikePageServlet extends HttpServlet {
     DAO dao;
@@ -35,7 +36,7 @@ public class LikePageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Configuration conf = new Configuration(freemarker.template.Configuration.VERSION_2_3_31);
-        conf.setDirectoryForTemplateLoading(new File("static-content"));
+        conf.setDirectoryForTemplateLoading(new File(pathname));
         conf.setDefaultEncoding(String.valueOf(StandardCharsets.UTF_8));
         resp.setCharacterEncoding(String.valueOf(StandardCharsets.UTF_8));
         sessionId = Arrays.stream(req.getCookies()).filter(x -> x.getName().equals(cookieName)).findFirst().get().getValue();
@@ -46,7 +47,7 @@ public class LikePageServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
         if (currentProfile == null) {
-            List<String> strings = Files.readAllLines(Paths.get("static-content/NoNewProfiles.html"));
+            List<String> strings = Files.readAllLines(Paths.get(pathname, "/NoNewProfiles.html"));
 
             try (PrintWriter w = resp.getWriter()) {
                 strings.forEach(w::println);
